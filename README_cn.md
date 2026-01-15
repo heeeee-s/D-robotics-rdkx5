@@ -3,7 +3,7 @@
 
 核心功能特性
 1.  建图功能：采用SLAM Toolbox实现激光SLAM实时建图，支持栅格地图生成、保存与加载，适配小车实时环境建模需求；
-2.  导航功能：基于ROS2 2D导航框架，主打路标跟综模式，可按预设路标完成自主路径规划，同时具备动态避障能力；
+2.  导航功能：基于ROS2 2D导航框架，主打路标跟踪模式，可按预设路标完成自主路径规划，同时具备动态避障能力；
 3.  视觉感知功能：集成YOLOv8目标检测模型，实现多类环境物体的识别、定位与分类；新增人脸检测功能，支持人脸的实时检测与跟踪；
 4.  语音播报功能：通过TTS完成文字到音频的转换，结合自定义开发的voice_broadcaster语音播报文件，实现检测结果、导航状态等信息的自主语音播报。
 
@@ -28,8 +28,8 @@ ROS版本：ROS2 Humble / ROS2 Iron
 4.  启动2D导航路标跟踪功能：
     ros2 launch wheeltec_nav2 wheeltec_nav2launch.py
     打开rviz2,选择路标点，开始目标跟踪
-6.  启动视觉感知功能（YOLOv8识物+人脸检测）：
-    ros2 launch d_robotics_rdloc5 detect_launch.py
+6.  启动视觉感知功能：
+    ros2 launch dnn_node_example dnn_node_example.launch.py dnn_example_config_file:=config/yolov8workconfig.json dnn_example_image_width:=1920 dnn_example_image_height:=1082
 7.  启动自定义语音播报功能（触发对应场景语音输出）：
     ros2 launch tts tts_make.launch.py
     ros2 run voice_broadcaster detection_subscriber
